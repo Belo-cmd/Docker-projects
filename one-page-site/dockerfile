@@ -1,0 +1,17 @@
+#. Using the node as the base image and linux alpine as the linux distro
+FROM node:alpine
+
+#.set the working directory
+WORKDIR /app
+
+#. Copy the OPS.html to the working directory
+COPY OPS.html /app
+
+#.Expose port 80
+EXPOSE 80
+
+#.Install a simple HTTP server toserve the HTML files
+RUN npm install http-server -g
+
+#.Start the HTTP server when the container starts
+CMD [ "http-server", "-p", "80" ]
